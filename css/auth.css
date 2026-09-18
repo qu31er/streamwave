@@ -1,0 +1,168 @@
+/* ============================================
+   СТРАНИЦА ВХОДА / РЕГИСТРАЦИИ
+   ============================================ */
+
+.auth-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 28px 26px 22px;
+  position: relative;
+  z-index: 1;
+  animation: cardIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Табы ---------- */
+.auth-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  margin-bottom: 22px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.25s;
+}
+
+.tab:hover { color: var(--text); }
+
+.tab.active {
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.22);
+  color: var(--text);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tab:focus-visible {
+  outline: 2px solid rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+  outline-offset: 2px;
+}
+
+/* ---------- Форма ---------- */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+
+.logo span {
+  background: linear-gradient(135deg,
+    rgb(var(--accent-r), var(--accent-g), var(--accent-b)),
+    #ff8ee0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------- Выбор роли ---------- */
+.role-select {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 4px 0;
+}
+
+.role-card { cursor: pointer; }
+.role-card input { display: none; }
+
+.role-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.25s;
+}
+
+.role-inner .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.role-card input:checked + .role-inner {
+  border-color: var(--accent);
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.18);
+  box-shadow:
+    0 0 0 2px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.35),
+    0 8px 24px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.25);
+  transform: translateY(-2px);
+}
+
+.role-card:hover .role-inner {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- Заметка ---------- */
+.auth-note {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-dim);
+  min-height: 18px;
+  transition: color 0.2s;
+}
+
+.auth-note.error { color: var(--error); }
+.auth-note.ok    { color: var(--ok); }
+/* ---------- Разделитель "или" ---------- */
+.guest-sep {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 14px;
+  color: var(--text-dim);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.guest-sep::before,
+.guest-sep::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+/* ---------- Кнопка гостя ---------- */
+.guest-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 13px 18px;
+  font-size: 14px;
+}

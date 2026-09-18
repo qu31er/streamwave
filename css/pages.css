@@ -1,0 +1,1321 @@
+/* ============================================
+   PAGES — стили контента страниц
+   ============================================ */
+
+/* ---------- Заголовки ---------- */
+.page h2 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.page h3 {
+  font-size: 16px;
+  margin: 22px 0 12px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* ---------- Заголовок главной ---------- */
+.page-title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.page-title span {
+  background: linear-gradient(135deg,
+    rgb(var(--accent-r), var(--accent-g), var(--accent-b)),
+    #ff8ee0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.page-sub {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 22px;
+}
+
+/* Гостевая плашка */
+.guest-banner {
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--text-dim);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.guest-banner a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- Хлебные крошки / назад ---------- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ---------- Карточки ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  padding: 12px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 0.25s, background 0.25s;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.card:focus-visible {
+  outline: 2px solid rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+  outline-offset: 2px;
+}
+
+.card-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg,
+    rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.5),
+    rgba(255, 142, 224, 0.45));
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  overflow: hidden;
+}
+
+.card-cover svg {
+  width: 40%;
+  height: 40%;
+  opacity: 0.75;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  text-decoration: none;
+}
+
+.play-fab {
+  position: absolute;
+  right: 18px;
+  top: calc(100% - 60px);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+  color: #0a0710;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s, transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 8px 20px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.5);
+}
+
+.card:hover .play-fab {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.play-fab:hover { transform: scale(1.08); }
+
+/* ===========================================
+/* ============================================
+   КАРУСЕЛЬ «ТОП ИСПОЛНИТЕЛЕЙ» — ПУЗЫРИ
+   ============================================ */
+
+/* Обёртка — большая стеклянная капсула */
+.artists-carousel-wrap {
+  position: relative;
+  margin: 0 0 12px;
+  padding: 8px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(22px) saturate(1.5);
+  -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Плавающие декоративные пузырьки внутри капсулы */
+.artists-carousel-wrap::before,
+.artists-carousel-wrap::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(2px);
+}
+
+.artists-carousel-wrap::before {
+  width: 120px;
+  height: 120px;
+  top: -60px;
+  left: 10%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.28),
+    rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.15)
+  );
+  animation: bubbleDriftA 12s ease-in-out infinite alternate;
+}
+
+.artists-carousel-wrap::after {
+  width: 90px;
+  height: 90px;
+  bottom: -40px;
+  right: 15%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 142, 224, 0.18)
+  );
+  animation: bubbleDriftB 14s ease-in-out infinite alternate;
+}
+
+@keyframes bubbleDriftA {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(30px, 15px, 0) scale(1.15); }
+}
+
+@keyframes bubbleDriftB {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-25px, -12px, 0) scale(1.1); }
+}
+
+/* Скроллируемая лента внутри капсулы */
+.artists-carousel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 12px 14px 14px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.artists-carousel::-webkit-scrollbar { display: none; }
+
+/* ============================================
+   Карточка-пузырь
+   ============================================ */
+
+.artist-card {
+  flex: 0 0 auto;
+  width: 140px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 10px;
+  border-radius: 28px;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+
+  /* Форма пузыря — стеклянная */
+  background:
+    radial-gradient(circle at 30% 25%,
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0.06) 45%,
+      rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.12) 100%);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -8px 20px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.08);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s,
+    border-color 0.3s;
+}
+
+/* Блик — как на настоящем пузыре */
+.artist-card::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 12%;
+  width: 40%;
+  height: 25%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.55),
+    transparent 70%
+  );
+  filter: blur(6px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Нижний отсвет — придаёт объём */
+.artist-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  width: 80%;
+  height: 60%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.4),
+    transparent 70%
+  );
+  filter: blur(20px);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.artist-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.5);
+  box-shadow:
+    0 16px 40px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.35),
+    0 0 60px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -8px 20px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.15);
+  text-decoration: none;
+}
+
+.artist-card:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Аватар внутри пузыря ---------- */
+.artist-avatar {
+  position: relative;
+  z-index: 2;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,
+    rgb(var(--accent-r), var(--accent-g), var(--accent-b)),
+    #ff8ee0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #0a0710;
+  box-shadow:
+    0 8px 22px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.45),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+/* ---------- Ник ---------- */
+.artist-name {
+  position: relative;
+  z-index: 2;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+/* ---------- Число треков ---------- */
+.artist-tracks {
+  position: relative;
+  z-index: 2;
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- Список треков ---------- */
+
+
+/* ---------- Список треков ---------- */
+.track-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.track-row {
+  display: grid;
+  grid-template-columns: 36px 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.track-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+}
+
+.track-row.playing {
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.16);
+}
+
+.track-row.playing .row-title {
+  color: rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+}
+
+.track-row .num {
+  color: var(--text-dim);
+  font-size: 13px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.track-row .row-main { min-width: 0; }
+
+.track-row .row-title {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-row .row-artist {
+  font-size: 12px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-row .row-status {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.track-row .row-status.pending  { background: rgba(255, 200, 90, 0.15); color: #ffd670; }
+.track-row .row-status.approved { background: rgba(142, 255, 176, 0.15); color: var(--ok); }
+.track-row .row-status.rejected { background: rgba(255, 128, 128, 0.15); color: var(--error); }
+
+.track-row .row-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.track-row:hover .row-actions { opacity: 1; }
+
+/* ---------- Иконочные кнопки ---------- */
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  position: relative;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+}
+
+.icon-btn:active { transform: scale(0.92); }
+
+.icon-btn:focus-visible {
+  outline: 2px solid rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+  outline-offset: 2px;
+}
+
+.icon-btn.active {
+  color: rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+}
+
+.icon-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+
+/* ---------- Формы ---------- */
+.form-row { margin-bottom: 14px; }
+
+.form-row > label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+input[type="file"] {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+input[type="file"]::file-selector-button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ---------- Заголовок страницы с обложкой ---------- */
+.page-header {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+  align-items: end;
+}
+
+.page-header .cover-lg {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg,
+    rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.6),
+    rgba(255, 142, 224, 0.5));
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.page-header .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.page-header .eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+
+.page-header h1 {
+  font-size: 44px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.page-header .sub {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.page-header .actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Страница трека ---------- */
+.track-hero {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.track-hero .cover-xl {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg,
+    rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.6),
+    rgba(255, 142, 224, 0.5));
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+}
+
+.track-hero .info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.track-hero .info h1 {
+  font-size: 38px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.track-hero .artist-link {
+  font-size: 16px;
+  color: var(--text-dim);
+  text-decoration: none;
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+
+.track-hero .artist-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.track-hero .description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+.lyrics-block {
+  max-width: 720px;
+  margin-top: 24px;
+}
+
+.lyrics-block h3 { margin-top: 0; }
+
+.lyrics {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text);
+  white-space: pre-wrap;
+  padding: 20px 24px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.clip-block {
+  margin-top: 24px;
+  max-width: 720px;
+}
+
+.clip-block video {
+  width: 100%;
+  border-radius: var(--radius-md);
+  background: #000;
+}
+
+/* ---------- Профиль ---------- */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+}
+
+.profile-header .avatar-xl {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,
+    rgb(var(--accent-r), var(--accent-g), var(--accent-b)),
+    #ff8ee0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 44px;
+  color: #0a0710;
+  flex-shrink: 0;
+  box-shadow: 0 12px 40px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.35);
+}
+
+.profile-header .info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.profile-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.profile-header .role-badge {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.2);
+  color: var(--accent);
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.profile-header .email {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.stats .stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stats .stat-value {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.stats .stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+}
+
+/* ---------- Настройки ---------- */
+.settings-card {
+  padding: 22px;
+  max-width: 640px;
+  margin-bottom: 16px;
+}
+
+.settings-card h3 {
+  margin-top: 0;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.setting-row label {
+  flex: 0 0 90px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.setting-row input[type="range"] { flex: 1; }
+
+.setting-row span {
+  font-variant-numeric: tabular-nums;
+  min-width: 40px;
+  text-align: right;
+}
+
+.color-preview {
+  height: 60px;
+  border-radius: var(--radius-md);
+  margin: 16px 0;
+  border: 1px solid var(--glass-border);
+  transition: background 0.2s;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.policy-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+
+.policy-text h4 {
+  color: var(--text);
+  margin: 14px 0 6px;
+  font-size: 14px;
+}
+
+.policy-text p { margin-bottom: 8px; }
+
+/* ---------- Пусто ---------- */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+/* ---------- Утилиты ---------- */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mb-16 { margin-bottom: 16px; }
+
+/* ============================================
+   ПЛЕЕР НА СТРАНИЦЕ ТРЕКА
+   ============================================ */
+
+.track-player {
+  margin: 20px 0 24px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.track-player::before {
+  content: '';
+  position: absolute;
+  inset: -30% -10%;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.25),
+    transparent 60%
+  );
+  filter: blur(60px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.tp-progress {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.tp-progress .tp-time {
+  font-variant-numeric: tabular-nums;
+  min-width: 42px;
+  text-align: center;
+}
+
+.tp-progress input[type="range"] {
+  height: 6px;
+}
+
+.tp-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.tp-controls .icon-btn {
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border-radius: 50%;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.15s,
+    border-color 0.2s,
+    box-shadow 0.25s;
+}
+
+.tp-controls .icon-btn:hover {
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.1);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.35);
+  color: rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.2);
+}
+
+.tp-controls .icon-btn:active {
+  transform: scale(0.94);
+}
+
+.tp-controls .icon-btn.active {
+  color: rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.15);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.5);
+  box-shadow: 0 0 18px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.4);
+}
+
+.tp-controls .icon-btn.active::after { display: none; }
+
+.tp-controls .icon-btn.play {
+  width: 62px;
+  height: 62px;
+  background: linear-gradient(135deg,
+    rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.95),
+    rgba(255, 142, 224, 0.85));
+  color: #0a0710;
+  border: none;
+  box-shadow:
+    0 10px 26px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.5),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.15s, box-shadow 0.25s;
+}
+
+.tp-controls .icon-btn.play:hover {
+  transform: scale(1.06);
+  box-shadow:
+    0 14px 36px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.65),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.tp-controls .icon-btn.play svg {
+  width: 24px;
+  height: 24px;
+  stroke-linejoin: round;
+}
+
+/* Скруглённый треугольник play */
+.tp-controls .icon-btn.play svg path,
+.miniplayer .icon-btn.play svg path,
+.full-player .controls-lg .icon-btn.play svg path {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.tp-extras {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.tp-extras .icon-btn {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.tp-extras .icon-btn:hover {
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.1);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.35);
+}
+
+.tp-extras .icon-btn.active {
+  color: rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.15);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.5);
+}
+
+.tp-extras .icon-btn.active::after { display: none; }
+
+.tp-volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 140px;
+  max-width: 240px;
+  color: var(--text-dim);
+}
+
+.tp-volume input {
+  flex: 1;
+}
+
+/* ---------- Кнопка скорости ---------- */
+.tp-speed-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.tp-speed-btn:hover {
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.1);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.4);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.tp-speed-btn:active {
+  transform: scale(0.96);
+}
+
+.tp-speed-btn .icon-sm {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
+}
+
+/* ---------- Модалка скорости ---------- */
+.speed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 4px 0 8px;
+}
+
+.speed-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  text-align: left;
+}
+
+.speed-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.speed-option:active {
+  transform: scale(0.99);
+}
+
+.speed-option.active {
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.16);
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.5);
+  color: rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+  font-weight: 700;
+  box-shadow: 0 0 18px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.2);
+}
+
+.speed-option .icon-sm {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+   Адаптив плеера трека
+   ============================================ */
+@media (max-width: 640px) {
+  .track-player {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .tp-controls { gap: 8px; }
+  .tp-controls .icon-btn { width: 42px; height: 42px; }
+  .tp-controls .icon-btn.play { width: 54px; height: 54px; }
+
+  .tp-extras {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .tp-volume { max-width: none; }
+
+  .tp-speed-btn {
+    justify-content: center;
+  }
+
+  .artist-card {
+    width: 100px;
+    padding: 10px 6px;
+  }
+  .artist-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  .artist-name { font-size: 12px; }
+  .artist-tracks { font-size: 10px; }
+
+  .page-title { font-size: 26px; }
+  .page-sub { font-size: 13px; margin-bottom: 18px; }
+}
+
+@media (max-width: 380px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .logo { font-size: 20px; }
+  .page { padding: 12px 10px 18px; }
+  .page-title { font-size: 22px; }
+  .miniplayer .icon-btn.play { width: 48px; height: 48px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artists-carousel { scroll-behavior: auto; }
+}
+/* ============================================
+   АВАТАР И ШАПКА ПРОФИЛЯ
+   ============================================ */
+
+/* ---------- Аватар с картинкой ---------- */
+.avatar.has-image,
+.avatar-xl.has-image,
+.avatar-lg.has-image {
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+}
+
+/* ---------- Шапка профиля (баннер) ---------- */
+.profile-banner {
+  width: 100%;
+  height: 160px;
+  border-radius: var(--radius-lg);
+  margin-bottom: -60px;
+  background:
+    radial-gradient(circle at 20% 30%,
+      rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.5),
+      transparent 60%),
+    radial-gradient(circle at 80% 70%,
+      rgba(255, 142, 224, 0.4),
+      transparent 60%),
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.02));
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.profile-banner.has-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Лёгкое затемнение поверх изображения, чтобы аватар читался */
+.profile-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    transparent 40%,
+    rgba(10, 7, 16, 0.35) 100%);
+  pointer-events: none;
+}
+
+/* Профиль-хедер теперь с отступом сверху под баннер */
+.profile-header {
+  position: relative;
+  z-index: 1;
+  padding: 20px 24px;
+  margin-top: 0;
+}
+
+/* ---------- Настройки: строка профиля ---------- */
+.settings-profile-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.avatar-lg {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,
+    rgb(var(--accent-r), var(--accent-g), var(--accent-b)),
+    #ff8ee0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 26px;
+  color: #0a0710;
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.35);
+  background-size: cover;
+  background-position: center;
+}
+
+.settings-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.settings-profile-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.settings-profile-role {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ---------- Кнопка выхода ---------- */
+.logout-btn {
+  color: var(--error);
+  border-color: rgba(255, 128, 128, 0.4);
+  gap: 8px;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 128, 128, 0.12);
+  color: var(--error);
+}
+
+/* ---------- Мобильная адаптация баннера ---------- */
+@media (max-width: 640px) {
+  .profile-banner {
+    height: 120px;
+    margin-bottom: -50px;
+    border-radius: var(--radius-md);
+  }
+
+  .profile-header {
+    padding: 18px;
+  }
+
+  .avatar-lg {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+}

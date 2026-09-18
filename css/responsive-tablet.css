@@ -1,0 +1,53 @@
+/* ============================================
+   TABLET — до 1024px
+   ============================================ */
+@media (max-width: 1024px) {
+
+  :root {
+    --radius-lg: 18px;
+    --radius-md: 14px;
+  }
+
+  .layout-body {
+    grid-template-columns: 220px 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .sidebar { padding: 16px 12px; gap: 14px; }
+  .sidebar .logo { font-size: 20px; }
+  .nav-btn { padding: 10px 12px; font-size: 13px; gap: 10px; }
+
+  .topbar { padding: 10px 14px; }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .card-cover { border-radius: 10px; }
+  .card-title { font-size: 13px; }
+  .card-sub { font-size: 11px; }
+
+  .miniplayer {
+    grid-template-columns: 220px 1fr auto;
+    gap: 14px;
+    padding: 10px 16px;
+  }
+  .miniplayer .cover { width: 46px; height: 46px; }
+  .miniplayer .icon-btn.play { width: 42px; height: 42px; }
+  .miniplayer .volume { width: 90px; }
+  .miniplayer .volume input { width: 60px; }
+
+  .modal { max-width: 440px; padding: 22px; }
+
+  .auth-card { max-width: 400px; padding: 24px 22px 20px; }
+  .logo { font-size: 24px; }
+
+  .setting-row label { flex: 0 0 80px; }
+
+  .page-header { grid-template-columns: 160px 1fr; gap: 18px; }
+  .page-header h1 { font-size: 34px; }
+
+  .track-hero { grid-template-columns: 220px 1fr; gap: 22px; }
+  .track-hero .info h1 { font-size: 30px; }
+}
